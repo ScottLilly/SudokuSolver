@@ -4,8 +4,6 @@ namespace SudokuEngine
 {
     public class Square
     {
-        private readonly List<int> _potentialValues = new List<int>() {1, 2, 3, 4, 5, 6, 7, 8, 9};
-
         internal enum Blocks
         {
             UpperLeft,
@@ -19,8 +17,10 @@ namespace SudokuEngine
             LowerRight
         }
 
-        public int Row { get; private set; }
-        public int Column { get; private set; }
+        public int Row { get; }
+        public int Column { get; }
+        public int? Value { get; set; }
+        internal List<int> PotentialValues { get; }
 
         internal Blocks Block
         {
@@ -55,16 +55,13 @@ namespace SudokuEngine
             }
         }
 
-        public bool IsSolved { get { return Value != null; } }
-
-        public int? Value { get; set; }
-        internal List<int> PotentialValues { get; private set; }
+        public bool IsSolved => Value != null;
 
         internal Square(int row, int column)
         {
             Row = row;
             Column = column;
-            PotentialValues = _potentialValues;
+            PotentialValues = new List<int> {1, 2, 3, 4, 5, 6, 7, 8, 9};
         }
     }
 }

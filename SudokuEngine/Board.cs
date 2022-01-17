@@ -5,7 +5,7 @@ namespace SudokuEngine
 {
     public class Board
     {
-        public List<Square> Squares { get; private set; }
+        public List<Square> Squares { get; }
 
         public Board()
         {
